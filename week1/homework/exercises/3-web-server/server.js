@@ -28,7 +28,14 @@ const server = http.createServer((req, res) => {
 
   fs.readFile(filePath, (err, file) => {
     if (err) {
-      throw err;
+      if (err.code === "ENOENT") {
+        fs.readFile(path.join(__dirname, "", "404.html"), (error, content) => {
+          res.setHeader("Content-Type", contentType);
+          res.end(content, "utf8");
+        });
+      } else {
+        res.end(`An error has occured ${err.code}`);
+      }
     } else {
       res.setHeader("Content-Type", contentType);
       res.write(file); // Sends a response back to the client
