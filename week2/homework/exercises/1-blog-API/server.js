@@ -7,7 +7,7 @@ const app = express();
 const { checkIfExist, createFile, getPost } = require("./utils");
 
 // YOUR CODE GOES IN HERE
-app.use(express.json()); //parse body to json
+app.use(express.json());
 
 //creating a new blog post
 app.post("/blogs", (req, res) => {
@@ -15,7 +15,7 @@ app.post("/blogs", (req, res) => {
   if (!req.body.title || !req.body.content) {
     res.send("Please enter a title and cotent!");
   } else {
-    //removing spaces
+    //removing spaces, so when new json file is created it would be one long string
     const id = req.body.title.replace(/\s+/g, "");
     let posts = {
       id,

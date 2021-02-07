@@ -9,7 +9,7 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-app.use(express.json()); //for paring json in request body
+app.use(express.json()); //for parsing json in request body
 
 app.use(express.static(path.join(__dirname, "/public"))); //for accesing stylesheet
 
