@@ -57,6 +57,7 @@ app.post("/weather", (req, res) => {
 
 //in case non existing page is visited
 app.get("*", (req, res) => {
+  res.status(404);
   res.render("notfound", {
     title,
     errorMessage: "404. Oops the page not found",
