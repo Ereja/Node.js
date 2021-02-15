@@ -4,7 +4,6 @@ const axios = require("axios");
 const path = require("path");
 
 const app = express();
-app.use(express.json()); //for parsing json in request body
 app.use(
   express.urlencoded({
     extended: true,
@@ -60,7 +59,7 @@ app.get("*", (req, res) => {
   res.status(404);
   res.render("notfound", {
     title,
-    errorMessage: "404. Oops the page not found",
+    errorMessage: "404. Oops the page was not found",
   });
 });
 
